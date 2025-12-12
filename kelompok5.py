@@ -62,9 +62,6 @@ class CarDiagnosticSystem:
 
     # --- LOGIKA DIAGNOSA TRANSMISI (DIPERDALAM) ---
     def get_transmission_questions(self, trans_type):
-        """
-        Menambahkan pertanyaan detail untuk membedakan karakteristik kerusakan.
-        """
         if trans_type == 'M': # Manual
             return [
                 {"tanya": "Bau hangus menyengat saat tanjakan/setengah kopling?", "masalah": "Kampas Kopling Terbakar", "solusi": "Dinginkan Kopling/Ganti Kampas"},
@@ -95,7 +92,8 @@ class CarDiagnosticSystem:
             if key in brand_input:
                 return self.brand_specific_questions[key]
         
-        return [] # Kembalikan list kosong jika merk tidak dikenal/tidak ada data khusus
+        # Kembalikan list kosong jika merk tidak dikenal/tidak ada data khusus
+        return [] 
 
     def process_diagnosis(self, existing_name=None, existing_trans=None, existing_brand=None):
         self.clear_screen()
